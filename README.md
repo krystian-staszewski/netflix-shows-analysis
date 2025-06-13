@@ -1,5 +1,6 @@
 # Netflix Movies/TV Shows Analysis
 ![logo](https://github.com/user-attachments/assets/2852505e-3dd4-4cbb-9d83-5c64ecd562d4)
+#
 *Netflix* is an American subscription video on-demand over-the-top streaming service. The service primarily distributes original and acquired films and television shows from various genres, and it is available internationally in multiple languages. Launched in 2007, nearly a decade after Netflix, Inc. began its pioneering DVD-by-mail movie rental service. By 2022, *Netflix Original* productions accounted for half of its library in the United States and the namesake company had ventured into other categories, such as video game publishing of mobile games through its flagship service. As of 2025, *Netflix* is the 18th most-visited website in the world, with 21.18% of its traffic coming from the United States, followed by the United Kingdom at 6.01%, Canada at 4.94%, and Brazil at 4.24%.
 
 Using the database of movies and series available on *Netflix*, I conducted a complete analysis of the offer of this streaming platform to draw interesting conclusions and try to find places for optimization.
@@ -11,12 +12,12 @@ To do this project I used:
 
 The dataset was taken from [Kaggle](https://www.kaggle.com/datasets/shivamb/netflix-shows).
 ### Table of Contests
-- [Prerequisites]()
-- [Data Overview]()
-- [Data Cleaning & Preparation]()
-- [Creating a Relational Database]()
-- [Analysis]()
-- [Conclusions]()
+- [Prerequisites](https://github.com/krystian-staszewski/netflix-shows-analysis#prerequisites)
+- [Data Overview](https://github.com/krystian-staszewski/netflix-shows-analysis#data-overview)
+- [Data Cleaning & Preparation](https://github.com/krystian-staszewski/netflix-shows-analysis#data-cleaning--preparation)
+- [Creating a Relational Database](https://github.com/krystian-staszewski/netflix-shows-analysis#creating-a-relational-database)
+- [Analysis](https://github.com/krystian-staszewski/netflix-shows-analysis#analysis)
+- [Conclusions](https://github.com/krystian-staszewski/netflix-shows-analysis#conclusions)
 ## Prerequisites
 The aim of this project is to build a comprehensive analysis of the data in order to obtain business knowledge. Let’s say we work in the analytics department at *Netflix* or a competitor. Our job is to understand trends and content gaps to drive revenue, engagement, and optimize content strategy and support decisions on which films/series to produce or promote. For example, we can assume that *Netflix* wants to expand in specific countries or in specific age groups. Based on the analysis of the film catalog, it is possible to identify whether, for example, Poland lacks films of a given genre, or whether crime series or comedies are the most popular globally. The results of the analysis will allow for the preparation of strategic recommendations.
 
@@ -66,6 +67,8 @@ Step 7: Finally, I created a fact table where I removed unnecessary columns (tho
 
 ![5](https://github.com/user-attachments/assets/22f33049-4c85-4a3c-82f0-34be4da2b866)
 ## Creating a Relational Database
+Once I had the .csv files created, I went to Microsoft SQL Server Management Studio and created a new database. Then, using the GUI, I loaded the .csv files into the database and set foreign keys for the linking tables. That gave me a ready-made database to work with.
+
 ![6](https://github.com/user-attachments/assets/e8f40dee-4ee2-4d70-acf8-f797fe5bfc22)
 ## Analysis
 ## Conclusions
