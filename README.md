@@ -71,4 +71,90 @@ Once I had the .csv files created, I went to Microsoft SQL Server Management Stu
 
 ![6](https://github.com/user-attachments/assets/e8f40dee-4ee2-4d70-acf8-f797fe5bfc22)
 ## Analysis
+I began my analysis by initially reviewing the database for basic information. I found out how many titles there were in the database, what the distribution of screenings looked like by type, and which directors and actors appeared most often.
+
+```sql
+-- The share of individual types of shows in the total
+SELECT
+	fs.type AS "Type",
+	COUNT(*) AS "Count"
+FROM
+	FactShow AS fs
+GROUP BY
+	"Type";
+
+-- The most popular genres and the number of titles in each genre
+SELECT
+	dg.genre AS "Genre",
+	COUNT(*) AS "Count"
+FROM ShowGenre AS sg
+	JOIN DimGenre AS dg
+		ON	sg.genre_id = dg.genre_id
+	JOIN FactShow AS fs
+		ON sg.show_id = fs.show_id
+GROUP BY
+	Genre
+ORDER BY
+	"Count" DESC;
+
+-- Country of origin of the content and its quantity
+SELECT
+	dc.country AS "Country",
+	COUNT(*) AS "Count"
+FROM ShowCountry AS sc
+	JOIN DimCountry AS dc
+		ON sc.country_id = dc.country_id
+	JOIN FactShow AS fs
+		ON sc.show_id = fs.show_id
+WHERE
+	dc.country <> 'Unknown'
+GROUP BY
+	Country
+ORDER BY
+	"Count" DESC;
+
+-- Number of shows by director
+SELECT
+	dd.director AS "Director",
+	COUNT(*) AS "Count"
+FROM ShowDirector AS sd
+	JOIN DimDirector AS dd
+		ON sd.director_id = dd.director_id
+	JOIN FactShow AS fs
+		ON sd.show_id = fs.show_id
+WHERE
+	dd.director <> 'Unknown'
+GROUP BY
+	Director
+ORDER BY
+	"Count" DESC;
+
+-- Number of shows by cast
+SELECT
+	dc.cast AS "Cast",
+	COUNT(*) AS "Count"
+FROM ShowCast AS sc
+	JOIN DimCast AS dc
+		ON sc.cast_id = dc.cast_id
+	JOIN FactShow AS fs
+		ON sc.show_id = fs.show_id
+WHERE
+	dc.cast <> 'Unknown'
+GROUP BY
+	"Cast"
+ORDER BY
+	"Count" DESC;
+
+-- Shows library growth over time
+SELECT
+	YEAR(fs.date_added) AS "Year",
+	COUNT(*) AS "Count"
+FROM FactShow AS fs
+GROUP BY
+	YEAR(fs.date_added)
+ORDER BY
+	Year;
+```
+
+While writing a query to show the growth of the shows library over time, I noticed that 10 items have a NULL value - I missed this at the data preparation stage. This needs to be corrected, so I will do it in SQL.
 ## Conclusions
